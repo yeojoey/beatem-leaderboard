@@ -38,7 +38,11 @@ app.get('/scores', (request, response) => {
       return b.score - a.score
     })
 
-    response.json(documents.score)
+    for(var i = 0; i < documents.length; i++) {
+      delete documents[i]['id'];
+  }
+
+    response.json(documents)
     response.send()
   })
   .catch(() => {
