@@ -5,6 +5,7 @@ html(lang="en")
     meta(charset="utf-8")
     meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
     meta(http-equiv="x-ua-compatible" content="ie=edge")
+    <link href="https://fonts.googleapis.com/css?family=Aldrich|Orbitron|Racing+Sans+One|Russo+One" rel="stylesheet">
 
     //- Bootstrap CSS
     link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous")
@@ -16,10 +17,59 @@ html(lang="en")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous")
     script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous")
 
+  style.
+    h1{
+      font-size: 50px;
+      font-family: 'Russo One', sans-serif;
+      color:#00E8FF;
+    }
+    h2{
+       font-family: 'Aldrich', sans-serif;
+       font-size: 40px;
+       color:#00E8FF;
+    }
+    th{
+      color:#00E8FF;
+      font-family: 'Aldrich', sans-serif;
+    }
+    td{
+      color:#00E8FF;
+      font-family: 'Aldrich', sans-serif;
+    }
+    body
+    {
+      background-color: #000000;
+      width: 100%;
+      height: 100%;
+      background-image:url(images/background.png);
+      background-size: cover;
+      background-repeat: no-repeat;
+      margin: 0;
+    padding: 0;
+    }
+    thead
+    {
+      background-color: #000000;
+    }
+    tbody
+    {
+      background-color: #000000;
+    }
+    .jumbotron
+    {
+      background-color: #303030;
+      border-style: solid;
+      border-width: 5px 80px;
+      border-color: white;
+      border-radius: 1000px;
+    }
+  
   body
+    div class = ""
     div.container-fluid
       div.jumbotron.text-center
-        h1 Simple Leaderboard
+        h1 Beat'Em Leaderboard
+          h2 High Scores
       table.table.table-hover.table-striped
         thead
           tr
@@ -33,3 +83,8 @@ html(lang="en")
               th(scope='row') #{index + 1}
               td #{result.name}
               td #{result.score}
+
+//font-family: 'Russo One', sans-serif;
+//font-family: 'Orbitron', sans-serif;
+//font-family: 'Aldrich', sans-serif;
+//font-family: 'Racing Sans One', cursive;
