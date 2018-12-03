@@ -24,7 +24,7 @@ app.get('/', function (request, response) {
     documents.sort((a, b) => {
       return b.score - a.score
     })
-    response.render('index', {entries: documents})
+    response.render('index', {entries: documents}) //render sorted scores to the index page
   })
   .catch(() => {
     response.status(500)
@@ -34,7 +34,11 @@ app.get('/', function (request, response) {
 
 app.get('/scores', (request, response) => {
   db.getAllEntries().then((documents) => {
-    response.json(documents)
+    documents.sort((a, b) => {
+      return b.score - a.score
+    })
+
+    response.json(documents.score)
     response.send()
   })
   .catch(() => {
