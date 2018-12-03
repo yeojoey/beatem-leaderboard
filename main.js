@@ -24,7 +24,7 @@ app.get('/', function (request, response) {
     documents.sort((a, b) => {
       return b.score - a.score
     })
-    response.render('index', {entries: documents})
+    response.render('index', {entries: documents}) //render sorted scores to the index page
   })
   .catch(() => {
     response.status(500)
@@ -34,6 +34,15 @@ app.get('/', function (request, response) {
 
 app.get('/scores', (request, response) => {
   db.getAllEntries().then((documents) => {
+    documents.sort((a, b) => {
+      return b.score - a.score
+    })
+
+    for(var i = 0; i < documents.length; i++) {
+      delete documents[i]['_id'];
+      delete documents[i]['Timestamp'];
+  }
+
     response.json(documents)
     response.send()
   })
