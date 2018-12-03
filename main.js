@@ -39,7 +39,8 @@ app.get('/scores', (request, response) => {
     })
 
     for(var i = 0; i < documents.length; i++) {
-      delete documents[i]['id'];
+      delete documents[i]['_id'];
+      delete documents[i]['Timestamp'];
   }
 
     response.json(documents)
