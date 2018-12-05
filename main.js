@@ -88,8 +88,10 @@ app.get('/shialabeouf', (request, response) => {
       delete documents[i]['Timestamp'];
   }
 
-    response.json(documents)
-    response.send()
+    //response.json(documents)
+    //response.send()
+    response.render('shialabeouf', {entries: documents}) //render sorted scores to the shialabeouf page
+    
   })
   .catch(() => {
     response.status(500)
