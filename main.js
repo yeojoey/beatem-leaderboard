@@ -77,6 +77,53 @@ app.post('/scores', function (request, response) {
   })
 })
 
+app.get('/shialabeouf', (request, response) => {
+  db.getAllSLEntries().then((documents) => {
+    documents.sort((a, b) => {
+      return b.score - a.score
+    })
+
+    for(var i = 0; i < documents.length; i++) {
+      delete documents[i]['_id'];
+      delete documents[i]['Timestamp'];
+  }
+
+    response.json(documents)
+    response.send()
+  })
+  .catch(() => {
+    response.status(500)
+    response.send()
+  })
+})
+
+app.post('/shialabeouf', function (request, response) {
+  console.log(request.body)
+  var body = request.body
+  if (!body.score && body.score !== 0) {
+    response.status(400)
+    response.send()
+    return
+  }
+  // Don't allow id's in post
+  if (body.hasOwnProperty('_id')) {
+    delete body._id
+  }
+
+  body.name = (body.name) ? body.name : 'Anonymous'
+  body.Timestamp = (body.timestamp) ? body.timestamp : new Date()
+
+  db.saveSLEntry(body).then((entry) => {
+    response.json(entry)
+    response.status(204)
+  }).catch(() => {
+    response.status(500)
+    response.send()
+  })
+})
+
+
+
 app.use(sass({
     /* Options */
   src: path.join(__dirname, 'sass'),

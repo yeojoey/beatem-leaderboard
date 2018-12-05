@@ -36,5 +36,30 @@ module.exports = (databasePath = `mongodb://localhost:27017/leaderboard`) => {
     })
   }
 
+  databaseHandler.getAllSLEntries = function () {
+    return new Promise((resolve, reject) => {
+      mongodb.collection('shialabeouf').find().toArray((error, documents) => {
+        if (error) {
+          console.error(error)
+          reject(error)
+        }
+        console.log(documents)
+        resolve(documents)
+      })
+    })
+  }
+
+  databaseHandler.saveSLEntry = (entry) => {
+    return new Promise((resolve, reject) => {
+      mongodb.collection('shialabeouf').insert(entry).then((result) => {
+        console.log(`Entry created: ${JSON.stringify(entry)}`)
+        resolve(result.ops[0])
+      }).catch((error) => {
+        console.error(error)
+        reject(error)
+      })
+    })
+  }
+
   return databaseHandler
 }
