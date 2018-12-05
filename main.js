@@ -30,7 +30,8 @@ app.get('/', function (request, response) {
         return b.score - a.score
       })
       response.render('index', {
-        entries: documents
+        // Limit to top 20
+        entries: documents.slice(0, 20)
       }) //render sorted scores to the index page
     })
     .catch(() => {
